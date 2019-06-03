@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Document</title>
+
+    <script>
+        $(function(){
+            let test = $("#test");
+            test.on("click", (e)=>{
+                
+            });
+            // let liList = document.querySelectorAll("li");
+            // liList.forEach(x => {
+            //     x.addEventListener("click", (e)=>{
+            //         alert("클릭");
+            //     });
+            // })
+
+            $("li").on("click", (e)=>{
+                alert("클릭");
+            })
+        });
+    </script>
+    <style>
+        #test {
+            width:300px; height: 300px; background-color: #ff0000;
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="test">
+
+    </div>
+    <ul>
+        <li>123123</li>
+        <li>123123</li>
+        <li>123123</li>
+        <li>123123</li>
+        <li>123123</li>
+    </ul>
+</body>
+</html>
