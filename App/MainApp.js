@@ -4,7 +4,8 @@ import Fund from './Fund';
 export default class MainApp {
     constructor(){
         this.sectionList = $("section");
-
+        this.currentSection = 0;
+        this.isscroll = false;
         this.fundDatas = [
             {title:"시험펀드1", desc:"펀드에 대한 설명 1", percent: 43},
             {title:"시험펀드2", desc:"펀드에 대한 설명 2", percent: 76},
@@ -30,8 +31,35 @@ export default class MainApp {
 
     eventHandle(){
         $(window).on("resize", e=> this.resize() );
+        // $(window).on("wheel",e => this.scroll(e));
+        window.addEventListener("wheel",e=> this.scroll(e));
     }
-
+    scroll(e){
+        let next = null;
+        if(this.isscroll)return;
+        this.isscroll = true;
+        if(e.deltaY > 0){
+            if(this.currentSection >= this.sectionList.length - 1)return;
+            this.currentSection++;
+            next = this.sectionList.eq(this.currentSection).offset().top;
+        }else if(e.deltaY < 0){
+            //스클롤이 올라가고 있음
+            if(this.currentSection <= 0 )return;
+            this.currentSection--;
+            next = this.sectionList.eq(this.currentSection).offset().top;
+       
+        }
+        if(next != null){
+            $("html, body").stop().animate({"scrollTop":next},1500,"swing",()=>{
+                this.isscroll = false;
+                if(this.currentSection ==  1){
+                    //펀드리스트 섹션으로 이동했음.
+                    this.topFundList.forEach(x => x.animateDraw());
+                }
+            });
+        }
+        
+    }
     resize() {
         this.sectionList.height(window.innerHeight);
         this.topFundList.forEach(x => x.resize());

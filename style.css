@@ -1,9 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR|Roboto&display=swap');
 * {
     margin:0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
 }
+.eng {
+    font-family: 'Roboto', sans-serif;
 
+}
 .container {
     width:1200px;
     margin:0 auto;
@@ -71,12 +76,13 @@ nav > ul > li:hover {
 #fund {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding-top:30px;
+   
 }
 
 .section-title {
-    font-size:35px;
+    font-size: 40px;
     margin-bottom: 40px;
 }
 
@@ -109,4 +115,76 @@ nav > ul > li:hover {
 
 .fund > .info-box {
     height:40%;
+}
+.party{
+    background-image: url(/imgs/money.jpg);
+    background-size: cover;
+}
+.party > .filter{
+    width: 100%;
+    height: 100%;
+    background-color:rgba(10,10,10,0.4);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15%;
+}
+.party  .section-title {
+    font-size: 60px !important;
+}
+.party .panel{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.panel > h3{
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.panel > p{
+    text-align: center;
+    margin-bottom: 30px;
+}
+.btn {
+    width: 130px;
+    height: 50px;
+    color: #fff;
+    background-color: #a2b70d;
+   
+    border: 5px double #fff;
+    font-size: 20px;
+    transition: all 0.5s;
+}
+.btn:hover{
+    background-color: transparent;
+    border-color: white;
+}
+#popup{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    display: none;
+    opacity: 0;
+    transition:  all 0.8s;
+}
+#popup.active {
+    display: flex;
+}
+#popup.visible{
+    opacity: 1;
+}
+#popup > .inner{
+    width: 70%;
+    max-height: 500px;
+    background-color: #fff;
+    border-radius: 10px; 
 }
